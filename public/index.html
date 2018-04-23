@@ -12,6 +12,20 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+    <link href="css/bootrap.css" rel="stylesheet" type="text/css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+    <link href="css/flickity.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/iconsmind.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.steps.css" rel="stylesheet" type="text/css">
+    <link href="css/lightbox.min.css" rel="stylesheet" type="text/css">
+    <link href="css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="css/socicon.css" rel="stylesheet" type="text/css">
+    <link href="css/spacing.css" rel="stylesheet" type="text/css">
+    <link href="css/stack-interface.css" rel="stylesheet" type="text/css">
+    <link href="css/theme.css" rel="stylesheet" type="text/css">
+    
+
 
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -22,14 +36,293 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Ethergram</title>
+    <title>Team Tax</title>
   </head>
   <body>
+    <a id="start"></a>
+<div class="nav-container ">
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 col-sm-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="TIMS logo" src="img/tims-logo.png" />
+                        <img class="logo logo-light" alt="TIMS logo" src="img/tims-logo.png" />
+                    </a>
+                </div>
+                <div class="col-xs-9 col-sm-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu1" class="bar bar--sm bar-1 hidden-xs " data-scroll-class='366px:pos-fixed'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 col-sm-2 hidden-xs">
+                    <div class="bar__module">
+                        <a href="index.php">
+                            <img class="logo logo-dark" alt="TIMs logo" src="img/tims-logo.png" />
+                            <img class="logo logo-light" alt="TIMs logo" src="img/tims-logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-11 col-sm-12 text-right text-left-xs text-left-sm">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+                            <li><a href="#">About</a></li>
+                            <li><a href="b.html">VAIDs Forms</a></li>
+                            <li><a href="#">Tax Calculator</a></li>
+                            <li><a href="#">Tax Credit</a></li>
+                            <li><a href="#">Land Use Charge</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
    
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div id="root"></div>
+    <div id="root" style="display:none"></div>
+    
+    <div class="main-container">
+        <section class="intro">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <a class="announcement" href="#">
+                            <span class="new-pill">New</span>
+                            <span class="message">Want to know how much tax you should be paying. Use the Tax Calculator</span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <h1 class="hdr-title mb8">Hi, I am TIMs. Your Tax Management System.</h1>
+                        <h4>The Smart way to know and verify your tax status.</h4>
+                        <p>
+                            TIMs is a solution for entrepreneurs, financial and tax consultants, translators, tutors and everyone whose business is based upon time rate payments of remote consulting services
+                        </p>
+                        <div class="modal-instance block">
+                            <div class="video-play-icon video-play-icon--xs modal-trigger bg--green" data-modal-index="0"></div>
+                            <span>See how it works</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="img/hand.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg--secondary why-tms__section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <h2 class="section-title">Pay Tax on only what you earn</h2>
+                        <p class="mb64">
+                            TIMs helps you better understand the taxation system. The types of tax that currently exist, what tax you should be paying for and the exact amount you should pay. Pay for only what you're taxed.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 why-tms">
+                        <div class="why-tms__item">
+                            <span class="v-line"></span>
+                            <span class="why-count">.01</span>
+                            <img src="img/icon-customise-dashboards.svg" alt="VAIDS Froms">
+                            <h1 class="why-title">VAIDs Forms</h1>
+                            <p class="why-body">Regularize your tax status relating to previous tax periods and pay any taxes due.</p>
+                            <div class="why-link-container">
+                                <a class="cta" href="#">Individual Form (VA1)</a>
+                                <a class="cta" href="#">Corporate Form (VA2)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 why-tms">
+                        <div class="why-tms__item">
+                            <span class="v-line"></span>
+                            <span class="why-count">.02</span>
+                            <img src="img/icon-customise-fields.svg" alt="Tax Credit">
+                            <h1 class="why-title">Tax Credit</h1>
+                            <p class="why-body">Know the amount of money as a taxpayers you are permitted to subtract from taxes owed to the government.</p>
+                            <div class="why-link-container">
+                                <a class="cta" href="#">See if you have Tax Credit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 why-tms">
+                        <div class="why-tms__item">
+                            <span class="v-line"></span>
+                            <span class="why-count">.03</span>
+                            <img src="img/icon-customise-fields.svg" alt="Land Use Charges">
+                            <h1 class="why-title">Land Use Charges</h1>
+                            <p class="why-body">Know the percentage of the assessed market value of your property and know the exact value to remit to the government</p>
+                            <div class="why-link-container">
+                                <a class="cta" href="#">Calculate your Land Use Charge</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tms-diff__section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="tms-diff">
+                            <h4>The Old Way</h4>
+                            <figure class="tms-diff__image">
+                                <img width="348" height="280" src="img/the-old-way-min.png" alt="">
+                            </figure>
+                            <ul class="old match-height" style="height: 294px;">
+                                <li>
+                                    <span class="item-number">1</span>
+                                    <div class="detail">
+                                        <span>Lengthy online forms</span>&nbsp; and phone numbers putting a very real barrier between you and your customers.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="item-number">2</span>
+                                    <div class="detail">
+                                        <span>Customers forced to fit around your availability</span>&nbsp; - not when it’s most convenient for them.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="item-number">3</span>
+                                    <div class="detail">
+                                        <span>Frequently missed opportunities</span>&nbsp; for appointments resulting in suboptimal schedules often left half empty.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="tms-diff">
+                            <h4>The TIMs Way</h4>
+                            <figure class="tms-diff__image">
+                                <img width="350" height="280" src="img/the-tims-way-min.png">
+                            </figure>
+                            <ul class="new match-height" style="height: 294px;">
+                                <li>
+                                    <span class="item-number">1</span>
+                                    <div class="detail">
+                                        <span>Reduce call centre costs</span>&nbsp; and offer real-time bookings, in-app messaging and more transparency for your customers.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="item-number">2</span>
+                                    <div class="detail">
+                                        <span>Give customers control</span>&nbsp; - let them choose the times they want and find the resources to deliver.
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="item-number">3</span>
+                                    <div class="detail">
+                                        <span>Enhanced Privacy</span>&nbsp; - adapt to the needs of your market and maximise the opportunity for revenue.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg--secondary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <h2 class="section-title">Reasons to use TIMS.</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="short-features__item">
+                            <img src="img/icon-security-authentication.svg" class="icon" alt="Security Feature Icon">
+                            <h4 class="title">Secure and Private</h4>
+                            <p class="description">Prevents unauthorized access to the network and ensure that users are who they claim to be. Privacy is maintained through the network and through the use of data partitioning techniques users have selective visibility of the system data.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="short-features__item">
+                            <img src="img/icon-customise-fields.svg" class="icon" alt="Security Feature Icon">
+                            <h4 class="title">Distibuted and Sustainable</h4>
+                            <p class="description">The system data is shared, updated with every transaction, and selectively replicated among participants in near real time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="short-features__item">
+                            <img src="img/icon-collaborate-proofing-approval.svg" class="icon" alt="Security Feature Icon">
+                            <h4 class="title">Transparent and Auditable</h4>
+                            <p class="description">Because users in the system have access to the same records, they can validate/verify identities or ownership without the need for third party intermediaries. Records are time-stamped and can be verified in near real time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="short-features__item">
+                            <img src="img/icon-collaborate-mywork.svg" class="icon" alt="Security Feature Icon">
+                            <h4 class="title">Increased Operational Efficiency</h4>
+                            <p class="description">Protect your sensitive data from accidental or malicious loss of integrity, availability and confidentiality whether in transit, at rest or on the go.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal-container">
+            <div class="modal-content">
+                <section class="imageblock feature-large bg--white border--round ">
+                    <div class="imageblock__content col-md-5 col-sm-3 pos-left">
+                        <div class="background-image-holder">
+                            <img alt="image" src="img/cowork-8.jpg" />
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-md-push-6 col-sm-7 col-sm-push-4">
+                                <h1>Ideal for design conscious startups.</h1>
+                                <p class="lead">
+                                    Start building a beautiful site for your startup &mdash; right in the comfort of your browser.
+                                </p>
+                                <hr class="short">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <input type="email" name="Email Address" placeholder="Email Address" />
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <input type="password" name="Password" placeholder="Password" />
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <button type="submit" class="btn btn--primary type--uppercase">Create Account</button>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <span class="type--fine-print">By signing up, you agree to the
+                                                    <a href="#">Terms of Service</a>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -40,10 +333,24 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script> 
-    <script src='sample.js'></script>
+    
+    <script src='js/countdown.min.js'></script>
+    <script src='js/datepicker.js'></script>
+    <script src='js/easypiechart.min.js'></script>
+    <script src='js/flickity.min.js'></script>
+    <script src='js/granim.min.js'></script>
+    <script src='js/isotope.min.js'></script>
+    <script src='js/jquery-3.1.1.min.js'></script>
+    <script src='js/jquery.steps.min.js'></script>
+    <script src='js/lightbox.min.js'></script>
+    <script src='js/parallax.min.js'></script>
+    <script src='js/scripts.min.js'></script>
+    <script src='js/select2.min.js'></script>
+    <script src='js/smooth-scroll.min.js'></script>
+    <script src='js/spectragram.min.js'></script>
+    <script src='js/twitterfetcher.min.js'></script>
+    <script src='js/typed.min.js'></script>
+    <script src='js/ytplayer.min.js'></script>
+  
   </body>
 </html>

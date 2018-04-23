@@ -1,12 +1,13 @@
 import {Table, Grid, Button, Form } from 'react-bootstrap';
 import React, { Component } from 'react';
 import Metamaskdefined from './metamaskdefined';
-import './App.css';
+//import './App.css';
 import web3 from './web3';
 import ipfs from './ipfs';
 import ethergram from './ethergram';
 import ethergraminfura from './ethergraminfura';
 import akinyemi from './akinyemi.jpg';
+import iconcollaboratemywork from './icon-collaborate-mywork.svg';
 import { Connect } from 'uport-connect'
 import axios from 'axios';
 
@@ -180,10 +181,15 @@ class App extends Component {
     //if (result.length !== 66) { throw new Error("invalid web3 implicit bytes32"); }
     return result.substring(0,66);
 }
+
+
     
    
   
     render() {
+      var divStyle = {
+  width: '75px'
+};
       if(this.state.isMetamask){
         return <Metamaskdefined /> 
         
@@ -192,90 +198,202 @@ class App extends Component {
       return (
         <div className="App">
         
-          <div className="header">
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-2">
-            <h1>TeamTax</h1>
-          </div>
-          <div className="col-xs-7">
-          </div>
-          
-          <div className="col-xs-2">
-            <h1 className="menu">menu</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-   
+    <div className="main-container">
+        <section className="intro">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-5">
+                        <div className="clearfix"></div>
+                        <img src="iconcollaboratemywork" style={divStyle} alt=""></img>
+                        <h1 className="small-title mb8">About the Company</h1>
+                        <p>
+                            TIMs is a solution for entrepreneurs, financial and tax consultants, translators, tutors and everyone whose business is based upon time rate payments of remote consulting sermvices
+                        </p>
+                        <hr></hr>
+                        <h5 className="mb8">Have a question? Speak to a tax consultant</h5>
+                        <p className="mb8">Want to know the status of your VAIDS or just have general enquiries about VAIDS</p>
+                        <p>
+                            <i className="fa fa-phone"></i> <strong>0800-Call-VAIDS (08002255824)</strong> - Toll Free
+                            <br></br>Mondays - Fridays 
+                            <br></br>8am - 6pm (Excluding Public Holidays)
+                        </p>
+                    </div>
+                    <div className="col-md-7">
+                        <form method="post" action="">
+                            <ul id="progressbar" className="text-center">
+                                <li className="active">About the BUsiness</li>
+                                <li>Nature of the Business</li>
+                                <li>About Business Tax History</li>
+                            </ul>
+                            <fieldset>
+                                <ul className="layout">
+                                    <li className="full">
+                                        <label for="business_name" className="required">Company/Business Name <span>*</span></label>
+                                        <input type="text" name="business_name" placeholder="What is your company/business name?" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="main_address" className="required">Main Address <span>*</span></label>
+                                        <input type="text" name="main_address" placeholder="Main Address" value=""></input>
+                                    </li>
+                                    <li className="half">
+                                        <label for="rc_number" className="required">RC Number <span>*</span></label>
+                                        <input type="text" name="rc_number" placeholder="RC Number*" required="required" value=""></input>
+                                    </li>
+                                    <li className="half">
+                                        <label for="last_name" className="required">Email <span>*</span></label>
+                                        <input type="email" name="email" placeholder="Email Address*" required="required" value=""></input>
+                                    </li>
+                                    <li className="half">
+                                        <label for="phone_number_1" className="required">Phone Number 1<span>*</span></label>
+                                        <input type="tel" name="phone_number_1" placeholder="Enter Phone Number 1" required="required" value=""></input>
+                                    </li>
+                                    <li className="half">
+                                        <label for="phone_number_2" className="">Phone Number 2</label>
+                                        <input type="tel" name="phone_number_2" placeholder="Enter Phone Number 2" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="website" className="">Website</label>
+                                        <input type="text" name="website" placeholder="Website (e.g www.mybusinessname.com)?" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="tin_number" className="required">Tax Identification Number <span>*</span></label>
+                                        <input type="text" name="tin_number" placeholder="" required="required" value=""></input>
+                                    </li>
+                                    <li>
+                                        <input type="button" name="next" className="next action-button" value="Next"></input>
+                                    </li>
+                                </ul>
+                            </fieldset>
 
-  <div className='nav-menu'>
-    <div className='container-nav'>
-      <ul>
-        
-      </ul>
-      <ul>
-        <a href="mailto:akinyemi.akindele95@gmail.com"><li>Tax Calculator</li></a>
-        <a href="https://twitter.com/akinmail1"><li>Tax Credit</li></a>
-      </ul>
-    </div>
-  </div>
-    
-    <Form className="newPost" onSubmit={this.onSubmit.bind(this)}>
-      <div className="container">
-        <div className="post">
-          <input type="text" name="taxid" placeholder="Tax identification No" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="companyname" placeholder="Company Name" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="rcnumber" placeholder="RC Number" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="address" placeholder="Address" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="mainaddress" placeholder="mainAddress" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="telephoneno1" placeholder="Telephone No1" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="telephoneno2" placeholder="Telephone No2" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="email" name="email" placeholder="Email" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="website" placeholder="Website" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="listofdirectors" placeholder="List of Directors" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          <br></br>
-          <input type="text" name="natureofbusiness" placeholder="Nature of Business" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
-          
-          
-          <div className="button-holder">
-            <button type="submit" className="btn-post">POST</button>
-          </div>
-        </div>
-      </div>
-    </Form>
-    <div className="posts">
-      <div className="container">
+                            <fieldset>
+                                <ul className="layout">
+                                    <li className="">
+                                        <label for="business_name" className="">Select Industry</label>
+                                        <select className="select-multiple form-control" multiple="multiple">
+                                            <option value="FS">Financial Services</option>
+                                            <option value="TR">Trading</option>
+                                            <option value="PS">Professional Services</option>
+                                            <option value="RE">Real Estate</option>
+                                            <option value="IT">Telecommunications/ICT</option>
+                                            <option value="OG">Oil and Gas</option>
+                                            <option value="MG">Manufacturing</option>
+                                        </select>
+                                    </li>
+                                    <li className="full">
+                                        <label for="other_business" className="">Others (Specify)</label>
+                                        <input type="text" name="other_business" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="business_name" className="">Select Tax Year</label>
+                                        <select className="select-single form-control">
+                                            <option value="">2016</option>
+                                            <option value="">2015</option>
+                                            <option value="">2014</option>
+                                            <option value="">2013</option>
+                                            <option value="">2012</option>
+                                            <option value="">2011</option>
+                                            <option value="">Pre 2011</option>
+                                        </select>
+                                    </li>
+                                    <li className="full">
+                                        <label for="equity" className="">Equity</label>
+                                        <input type="text" name="equity" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="shareholders_deposit" className="">Shareholders Deposit</label>
+                                        <input type="text" name="shareholders_deposit" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="preference_shares" className="">Preference Shares</label>
+                                        <input type="text" name="preference_shares" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="debt" className="">Debt</label>
+                                        <input type="text" name="debt" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="gift" className="">Gift (State Source)</label>
+                                        <input type="text" name="gift" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="retained_profit" className="">Retained Profit</label>
+                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="other_income" className="">Others (Specify)</label>
+                                        <input type="text" name="other_income" placeholder="" value=""></input>
+                                    </li>
+                                    <li>
+                                        <input type="button" name="previous" className="previous action-button-previous" value="Previous"></input>
+                                        <input type="button" name="next" className="next action-button" value="Next"></input>
+                                    </li>
+                                </ul>
+                            </fieldset>
 
-    {this.state.events.map((item,i) => 
+                            <fieldset>
+                                <ul className="layout">
+                                    <li className="full">
+                                        <label for="business_name" className="">Select Tax Year</label>
+                                        <select className="select-single form-control">
+                                            <option value="">2016</option>
+                                            <option value="">2015</option>
+                                            <option value="">2014</option>
+                                            <option value="">2013</option>
+                                            <option value="">2012</option>
+                                            <option value="">2011</option>
+                                            <option value="">Pre 2011</option>
+                                        </select>
+                                    </li>
+                                    <li className="full">
+                                        <label for="corporate_income_tax" className="">Corporate Income Tax</label>
+                                        <input type="text" name="corporate_income_tax" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="shareholders_deposit" className="">Capital Gains Tax</label>
+                                        <input type="text" name="shareholders_deposit" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="preference_shares" className="">Value Added Tax</label>
+                                        <input type="text" name="preference_shares" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="debt" className="">NITDA Levy</label>
+                                        <input type="text" name="debt" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="gift" className="">Education Tax</label>
+                                        <input type="text" name="gift" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="retained_profit" className="">PAYE taxes of Staff Paid</label>
+                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="retained_profit" className="">Vendors WHT Paid</label>
+                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="retained_profit" className="">Import and Excise Duties</label>
+                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
+                                    </li>
+                                    <li className="full">
+                                        <label for="other_income" className="">Others (Specify)</label>
+                                        <input type="text" name="other_income" placeholder="" value=""></input>
+                                    </li>
+                                    <li>
+                                        <input type="button" name="previous" className="previous action-button-previous" value="Previous"></input>
+                                        <input type="submit" name="submit" className="submit action-button" value="Submit"></input>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     
-      
-        <div className="post">
-          <img className="avatar" src="https://s3.amazonaws.com/codecademy-content/courses/jquery+jfiddle+test/feedster/profile-teal.svg"/>
-          <h3>Ivory Breath</h3>
-          <p>Buffalo bulgogi, are you kidding me!?! Do yourself a favor and head to this restaurant.</p>
-          <button className="btn">+1</button>
-        </div>
-      
-    
-    
-    
-    )}
 
-    </div>
-    </div>
-
-
-     </div>
+     </div></div>
       );
     } //render
 }
