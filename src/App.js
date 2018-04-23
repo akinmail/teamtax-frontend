@@ -5,7 +5,7 @@ import Metamaskdefined from './metamaskdefined';
 import web3 from './web3';
 import ipfs from './ipfs';
 import ethergram from './ethergram';
-import ethergraminfura from './ethergraminfura';
+
 import akinyemi from './akinyemi.jpg';
 import iconcollaboratemywork from './icon-collaborate-mywork.svg';
 import { Connect } from 'uport-connect'
@@ -53,24 +53,9 @@ class App extends Component {
       this.state.isMetamask=true;         
   } 
         console.log(ethergram)
-    console.log(ethergraminfura)
-      ethergraminfura.events.gram({
-    fromBlock: 0
-}, function(error, event){ 
-  if (error) {
-          console.log(error)
-        return;
-        }
-  console.log(event); })
-.on('data', function(event){
-    console.log(event); // same results as the optional callback above
-})
-.on('changed', function(event){
-    // remove event from local database
-})
-.on('error', console.error);
-      
-  }
+    
+       
+}
     
    str2ab(str) {
   var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
@@ -162,7 +147,7 @@ class App extends Component {
         var hashtag3=web3.utils.fromAscii(this.state.textInput.split("#")[3]);
         console.log('a=',a)
         console.log('b',b)
-        ethergram.methods.makeGram("0x00",'0x00',hashtag1,hashtag2,hashtag3).send({
+        ethergram.methods.createVaids('this.state.taxid','this.state.ipfsHash').send({
           from: accounts[0] 
         }, (error, transactionHash) => {
           console.log(transactionHash);
@@ -219,7 +204,7 @@ class App extends Component {
                         </p>
                     </div>
                     <div className="col-md-7">
-                        <form method="post" action="">
+                        <form onSubmit={this.onSubmit.bind(this)}>
                             <ul id="progressbar" className="text-center">
                                 <li className="active">About the BUsiness</li>
                                 <li>Nature of the Business</li>
@@ -229,47 +214,39 @@ class App extends Component {
                                 <ul className="layout">
                                     <li className="full">
                                         <label for="business_name" className="required">Company/Business Name <span>*</span></label>
-                                        <input type="text" name="business_name" placeholder="What is your company/business name?" value=""></input>
+                                        <input type="text" name="companyname" placeholder="Company Name" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
                                     <li className="full">
                                         <label for="main_address" className="required">Main Address <span>*</span></label>
-                                        <input type="text" name="main_address" placeholder="Main Address" value=""></input>
+                                        <input type="text" name="mainaddress" placeholder="mainAddress" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
                                     <li className="half">
                                         <label for="rc_number" className="required">RC Number <span>*</span></label>
-                                        <input type="text" name="rc_number" placeholder="RC Number*" required="required" value=""></input>
-                                    </li>
+                                        <input type="text" name="rcnumber" placeholder="RC Number" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>                                    </li>
                                     <li className="half">
                                         <label for="last_name" className="required">Email <span>*</span></label>
-                                        <input type="email" name="email" placeholder="Email Address*" required="required" value=""></input>
+                                        <input type="email" name="email" placeholder="Email Address*" required="required" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
                                     <li className="half">
                                         <label for="phone_number_1" className="required">Phone Number 1<span>*</span></label>
-                                        <input type="tel" name="phone_number_1" placeholder="Enter Phone Number 1" required="required" value=""></input>
+                                        <input type="tel" name="telephoneno1" placeholder="Telephone No1" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
                                     <li className="half">
                                         <label for="phone_number_2" className="">Phone Number 2</label>
-                                        <input type="tel" name="phone_number_2" placeholder="Enter Phone Number 2" value=""></input>
+                                        <input type="tel" name="telephoneno2" placeholder="Telephone No2" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
+
                                     </li>
                                     <li className="full">
                                         <label for="website" className="">Website</label>
-                                        <input type="text" name="website" placeholder="Website (e.g www.mybusinessname.com)?" value=""></input>
+                                        <input type="text" name="website" placeholder="Website (e.g www.mybusinessname.com)?" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
                                     <li className="full">
-                                        <label for="tin_number" className="required">Tax Identification Number <span>*</span></label>
-                                        <input type="text" name="tin_number" placeholder="" required="required" value=""></input>
+                                        <label for="taxid" className="required">Tax Identification Number <span>*</span></label>
+                                        <input type="text" name="taxid" placeholder="Tax identification No" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
-                                    <li>
-                                        <input type="button" name="next" className="next action-button" value="Next"></input>
-                                    </li>
-                                </ul>
-                            </fieldset>
-
-                            <fieldset>
-                                <ul className="layout">
                                     <li className="">
                                         <label for="business_name" className="">Select Industry</label>
-                                        <select className="select-multiple form-control" multiple="multiple">
+                                        <select name="natureofbusiness" className="select-multiple form-control" multiple="multiple">
                                             <option value="FS">Financial Services</option>
                                             <option value="TR">Trading</option>
                                             <option value="PS">Professional Services</option>
@@ -281,111 +258,15 @@ class App extends Component {
                                     </li>
                                     <li className="full">
                                         <label for="other_business" className="">Others (Specify)</label>
-                                        <input type="text" name="other_business" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="business_name" className="">Select Tax Year</label>
-                                        <select className="select-single form-control">
-                                            <option value="">2016</option>
-                                            <option value="">2015</option>
-                                            <option value="">2014</option>
-                                            <option value="">2013</option>
-                                            <option value="">2012</option>
-                                            <option value="">2011</option>
-                                            <option value="">Pre 2011</option>
-                                        </select>
-                                    </li>
-                                    <li className="full">
-                                        <label for="equity" className="">Equity</label>
-                                        <input type="text" name="equity" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="shareholders_deposit" className="">Shareholders Deposit</label>
-                                        <input type="text" name="shareholders_deposit" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="preference_shares" className="">Preference Shares</label>
-                                        <input type="text" name="preference_shares" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="debt" className="">Debt</label>
-                                        <input type="text" name="debt" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="gift" className="">Gift (State Source)</label>
-                                        <input type="text" name="gift" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="retained_profit" className="">Retained Profit</label>
-                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="other_income" className="">Others (Specify)</label>
-                                        <input type="text" name="other_income" placeholder="" value=""></input>
+                                        <input type="text" name="othernatureofbusiness" placeholder="" value={this.state.value} onChange={this.handleTextChange.bind(this)}></input>
                                     </li>
                                     <li>
-                                        <input type="button" name="previous" className="previous action-button-previous" value="Previous"></input>
-                                        <input type="button" name="next" className="next action-button" value="Next"></input>
-                                    </li>
-                                </ul>
-                            </fieldset>
-
-                            <fieldset>
-                                <ul className="layout">
-                                    <li className="full">
-                                        <label for="business_name" className="">Select Tax Year</label>
-                                        <select className="select-single form-control">
-                                            <option value="">2016</option>
-                                            <option value="">2015</option>
-                                            <option value="">2014</option>
-                                            <option value="">2013</option>
-                                            <option value="">2012</option>
-                                            <option value="">2011</option>
-                                            <option value="">Pre 2011</option>
-                                        </select>
-                                    </li>
-                                    <li className="full">
-                                        <label for="corporate_income_tax" className="">Corporate Income Tax</label>
-                                        <input type="text" name="corporate_income_tax" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="shareholders_deposit" className="">Capital Gains Tax</label>
-                                        <input type="text" name="shareholders_deposit" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="preference_shares" className="">Value Added Tax</label>
-                                        <input type="text" name="preference_shares" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="debt" className="">NITDA Levy</label>
-                                        <input type="text" name="debt" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="gift" className="">Education Tax</label>
-                                        <input type="text" name="gift" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="retained_profit" className="">PAYE taxes of Staff Paid</label>
-                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="retained_profit" className="">Vendors WHT Paid</label>
-                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="retained_profit" className="">Import and Excise Duties</label>
-                                        <input type="text" name="retained_profit" placeholder="" value=""></input>
-                                    </li>
-                                    <li className="full">
-                                        <label for="other_income" className="">Others (Specify)</label>
-                                        <input type="text" name="other_income" placeholder="" value=""></input>
-                                    </li>
-                                    <li>
-                                        <input type="button" name="previous" className="previous action-button-previous" value="Previous"></input>
                                         <input type="submit" name="submit" className="submit action-button" value="Submit"></input>
                                     </li>
                                 </ul>
                             </fieldset>
+
+                           
                         </form>
                     </div>
                 </div>
