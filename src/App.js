@@ -8,15 +8,15 @@ import ethergram from './ethergram';
 
 import akinyemi from './akinyemi.jpg';
 import iconcollaboratemywork from './icon-collaborate-mywork.svg';
-import { Connect } from 'uport-connect'
+import { Connect, SimpleSigner, statusContractABI } from 'uport-connect'
 import axios from 'axios';
 
-const uport = new Connect('MyDApp')
-/*const uport = new Connect('MyDApp', {
-  clientId: 'YOUR APPLICATION ID FROM APP MANAGER',
-  signer: SimpleSigner('YOUR SIGNING KEY FROM APP MANAGER')
-})*/
-var ethers = require('ethers');
+const uport = new Connect('Tim', {
+      clientId: '2oritQxt3BDoTKGCnemcoCJ5zwyTvn5WZ4b',
+      network: 'ropsten',
+      signer: SimpleSigner('646181ff0a17a92bb454ab79ce9138b5c04e29c2ed252d640f362ae7dc1fa76f')
+    })
+
 
 
 
@@ -42,7 +42,7 @@ class App extends Component {
  
   componentWillMount(){
     const req = { requested: ['name', 'country','taxid'], verified: ['GithubUser']}
-      uport.requestCredentials().then((credentials) => {
+      uport.requestCredentials(req).then((credentials) => {
   console.log(credentials)
   this.state.taxId=credentials.taxid
 })
@@ -160,12 +160,12 @@ class App extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  web3StringToBytes32(text) {
+  /*web3StringToBytes32(text) {
     var result = ethers.utils.hexlify(ethers.utils.toUtf8Bytes(text));
     //while (result.length < 66) { result += '0'; }
     //if (result.length !== 66) { throw new Error("invalid web3 implicit bytes32"); }
     return result.substring(0,66);
-}
+}*/
 
 
     
